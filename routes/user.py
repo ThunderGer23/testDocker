@@ -59,11 +59,6 @@ def update_user(id: str, user: User):
     :return: A list of users
     """
     new_user = dict(user)
-    last_user = conn.local.user.find_one({"_id" : ObjectId(id)})
-    if( len(new_user['password']) > 0 and sha256_crypt(new_user['password'],last_user['password'])):
-        new_user['password'] = sha256_crypt.encrypt(new_user['password'])
-    else:
-        new_user['password'] = last_user['password']
     conn.local.user.find_one_and_update({"_id": ObjectId(id)}, {"$set": new_user})
     return userEntity(conn.local.user.find_one({"_id" : ObjectId(id)}))
 

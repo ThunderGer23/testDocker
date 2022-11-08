@@ -2,4 +2,4 @@
 from pymongo import MongoClient
 from config.keys import MongoCli
 
-conn = MongoClient(MongoCli['ThunderGer'])
+conn = MongoClient(MongoCli['Pruebas'])
