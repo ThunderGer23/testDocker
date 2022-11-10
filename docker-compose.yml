@@ -4,6 +4,8 @@ services:
     build: ./
     ports:
       - "8000:8000"
+    environment:
+      - TESSDATA_PREFIX=/code    
     #links:
       #- Monguito
   #Monguito:
@@ -17,3 +19,6 @@ services:
       #/var/lib/mariadb/
 #volumes:
 #  mongo-data:
+
+
+#sudo docker create -it --name space-stone -e "TESSDATA_PREFIX=/app" -v "$PWD":/app -w /app clearlinux/tesseract-ocr tesseract Untitled4_20221109223549.png stdout --oem 1

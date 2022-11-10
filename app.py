@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routes.user import user
+#from routes.user import user
+from routes.test import test
 from docs import tags_metadata
 
 # Creating a FastAPI object.
@@ -16,4 +17,4 @@ app = FastAPI(
 )
 
 # Importing the `user` module from the `routes` folder.
-app.include_router(user)
+app.include_router(test)
