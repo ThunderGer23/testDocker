@@ -7,8 +7,7 @@ tags_metadata = [{
         "url": "http://x-force.example.com/contact/",
         "email": "dp@x-force.example.com",
     }},
-    {
-        
+    { 
     "name": "Test",
     "description": "CRUD de Users",
     "contact":{
