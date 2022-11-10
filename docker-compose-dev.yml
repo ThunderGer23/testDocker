@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  apidocker:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    links:
+      - Monguito
+    volumes:
+      - ./:/code
+  Monguito:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      #/var/lib/mysql
+      #/var/lib/postgesql/
+      #/var/lib/mariadb/
+volumes:
+  mongo-data:
