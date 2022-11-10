@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from routes.test import test
 from docs import tags_metadata
 
+
 # Creating a FastAPI object.
 app = FastAPI(
     title= "ThunderAPI para Docker",
