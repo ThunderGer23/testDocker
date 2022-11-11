@@ -1,6 +1,8 @@
 from fastapi import APIRouter, File, UploadFile
 from PIL import Image
+from models.files import Files
 from pytesseract import pytesseract
+from config.db import conn
 from os import getcwd
 from docs import tags_metadata
 import io
@@ -29,9 +31,13 @@ async def submit_image(file: UploadFile = File(...),):
     :type file: UploadFile
     :return: The text that was extracted from the image.
     """
+    image = Files()
+    image.name = file.filename
+    image.data = await file.read()
+    id = conn.local.testimage.insert_one(image).inserted_id
     with Image.open(io.BytesIO(await file.read())) as pic:
         texto = pytesseract.image_to_string(pic)
-    return texto
+    return str({texto, id})
 
 @test.post('/submit_more', response_model= dict(), tags=["Test"])
 async def submit_images(files: List[UploadFile]):
