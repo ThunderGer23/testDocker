@@ -9,7 +9,7 @@ from starlette.status import HTTP_226_IM_USED
 
 user = APIRouter()
 
-@user.get('/users', response_model=list[User], tags=["Users"])
+@user.get('/users', response_model=list[User], tags=["Tests"])
 def search_users():
     """
     It returns a list of users from the database
