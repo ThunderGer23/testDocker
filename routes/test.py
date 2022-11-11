@@ -31,12 +31,13 @@ async def submit_image(file: UploadFile = File(...),):
     :type file: UploadFile
     :return: The text that was extracted from the image.
     """
+    data = await file.read()
     image = {
         "name": file.filename,
-        "data": await file.read()
+        "data": data
     }
     id = conn.local.testimage.insert_one(image).inserted_id
-    with Image.open(io.BytesIO(await file.read())) as pic:
+    with Image.open(io.BytesIO(data)) as pic:
         texto = pytesseract.image_to_string(pic)
     return str({texto, id})
 
