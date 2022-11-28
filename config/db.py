@@ -1,5 +1,5 @@
 # Connecting to the MongoDB database.
 from pymongo import MongoClient
-from config.keys import MongoCli
+from os import environment as env
 
-conn = MongoClient(MongoCli['docker'])
+conn = MongoClient(env['DOCKER'])
