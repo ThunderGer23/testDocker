@@ -2,4 +2,4 @@
 from pymongo import MongoClient
 from os import environment as env
 
-conn = MongoClient(env['DOCKER'])
+conn = MongoClient(env['MONGO_CLI'])
